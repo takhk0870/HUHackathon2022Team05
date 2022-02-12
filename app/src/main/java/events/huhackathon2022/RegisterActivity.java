@@ -10,31 +10,40 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    Intent intentToWithMap = new Intent(this, WithMapActivity.class);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        EditText etUserName         = findViewById(R.id.etUserName);
-        EditText etUserEmailOrPhone = findViewById(R.id.etUserEmailOrPhone);
-        EditText etUserLatitude     = findViewById(R.id.etUserLatitude);
-        EditText etUserLongitude    = findViewById(R.id.etUserLongitude);
+        Intent intentToWithMap = new Intent(this, WithMapActivity.class);
 
-        String userName         = etUserName.getText().toString();
-        String userEmailOrPhone = etUserEmailOrPhone.getText().toString();
-        double userLatitude = Double.parseDouble(etUserLatitude.getText().toString());
-        double userLongitude = Double.parseDouble(etUserLongitude.getText().toString());
+        Button registerButton = findViewById(R.id.registerButton);
+        registerButton.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
 
-        if(userName.length() != 0 && userEmailOrPhone.length() != 0){
-            intentToWithMap.putExtra("user_name", userName);
-            intentToWithMap.putExtra("user_emailOrPhone", userEmailOrPhone);
-            intentToWithMap.putExtra("user_latitude", userLatitude);
-            intentToWithMap.putExtra("user_longitude", userLongitude);
+                        EditText etUserName         = findViewById(R.id.etUserName);
+                        EditText etUserEmailOrPhone = findViewById(R.id.etUserEmailOrPhone);
+                        EditText etUserLatitude     = findViewById(R.id.etUserLatitude);
+                        EditText etUserLongitude    = findViewById(R.id.etUserLongitude);
 
-            startActivity(intentToWithMap);
-        }
+                        String userName         = etUserName.getText().toString().trim();
+                        String userEmailOrPhone = etUserEmailOrPhone.getText().toString();
+                        double userLatitude     = Double.parseDouble(etUserLatitude.getText().toString());
+                        double userLongitude    = Double.parseDouble(etUserLongitude.getText().toString());
+
+                        if(userName.length() != 0 && userEmailOrPhone.length() != 0){
+                            intentToWithMap.putExtra("user_name", userName);
+                            intentToWithMap.putExtra("user_emailOrPhone", userEmailOrPhone);
+                            intentToWithMap.putExtra("user_latitude", userLatitude);
+                            intentToWithMap.putExtra("user_longitude", userLongitude);
+
+                            startActivity(intentToWithMap);
+                        }
+                    }
+                }
+        );
 
     }
 }
