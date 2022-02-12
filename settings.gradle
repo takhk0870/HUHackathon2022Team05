@@ -1,0 +1,2 @@
+rootProject.name = "HUHackathon2022"
+include ':app'
