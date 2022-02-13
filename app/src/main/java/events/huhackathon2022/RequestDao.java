@@ -22,7 +22,7 @@ public interface RequestDao {
     Request findByNameAndEmailAddress(String userName, String emailAddress);
 
     @Insert
-    void insertAll(Request... requests);
+    void insert(Request request);
 
     @Delete
     void delete(Request request);

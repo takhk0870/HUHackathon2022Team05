@@ -19,7 +19,7 @@ public interface UserDao {
     User findByNameAndEmailAddress(String userName, String emailAddress);
 
     @Insert
-    void insertAll(User... users);
+    void insert(User user);
 
     @Delete
     void delete(User user);

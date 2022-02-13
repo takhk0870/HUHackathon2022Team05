@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class User {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int userID;
 
     @ColumnInfo(name = "user_name")
@@ -24,4 +24,16 @@ public class User {
 
     @ColumnInfo(name = "deliver_point")
     public int deliverPoint;
+
+    public User(){
+    }
+
+    public User(int i, String userName, String userEmailOrPhone, double userLatitude, double userLongitude, int deliverP) {
+        this.userID = i;
+        this.userName = userName;
+        this.emailAddress = userEmailOrPhone;
+        this.latitude = userLatitude;
+        this.longitude = userLongitude;
+        this.deliverPoint = deliverP;
+    }
 }
