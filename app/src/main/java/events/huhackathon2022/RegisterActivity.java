@@ -21,6 +21,13 @@ public class RegisterActivity extends AppCompatActivity {
         AppDataBase db = Room.databaseBuilder(this, AppDataBase.class, "User").build();
         UserDao userDao = db.userDao();
 
+//        new Thread(new Runnable() {  //データベース全削除用
+//            @Override
+//            public void run() {
+//                userDao.reset();
+//            }
+//        }).start();
+
         double[][] deliverPoints = {{12.321, 45.395}, {65.598, 65.279}, {23.798, 17.984}, };
 
         Button registerButton = findViewById(R.id.registerButton);
@@ -59,11 +66,11 @@ public class RegisterActivity extends AppCompatActivity {
                                 public void run() {
                                     userDao.insert(new User(0, userName, userEmailOrPhone, userLatitude, userLongitude, finalDeliverP));
                                 }
-                            });
+                            }).start();  //"User"データベースにユーザー情報を登録
 
-                            intentToWithMap.putExtra("deliver_point", deliverP);
+                            intentToWithMap.putExtra("deliver_point", deliverP);  //遷移時に渡すデータ("deliver_point"で取り出す)
 
-                            startActivity(intentToWithMap);
+                            startActivity(intentToWithMap);  //WithMapActivityへの遷移
                         }
                     }
                 }
