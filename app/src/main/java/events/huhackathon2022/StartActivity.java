@@ -15,7 +15,7 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
 
         Intent intentToRegister = new Intent(this, RegisterActivity.class);
-        Intent intentToLogIn   ;
+        Intent intentToLogIn    = new Intent(this, LogInActivity.class);
 
         Button toRegisterButton = findViewById(R.id.toRegisterButton);
         Button toLogInButton    = findViewById(R.id.toLogInButton);
@@ -33,7 +33,7 @@ public class StartActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        startActivity(intentToLogIn);
                     }
                 }
         );

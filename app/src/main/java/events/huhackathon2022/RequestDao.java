@@ -15,11 +15,8 @@ public interface RequestDao {
     @Query("SELECT * FROM request WHERE userID IN (:userIds)")
     List<Request> loadAllByIds(int[] userIds);
 
-    @Query("SELECT * FROM request WHERE user_name = (:userName)")
-    List<Request> loadAllById(String userName);
-
     @Query("SELECT * FROM request WHERE user_name = (:userName) AND email_address = (:emailAddress)")
-    Request findByNameAndEmailAddress(String userName, String emailAddress);
+    List<Request> loadAllByNameAndEmailAddress(String userName, String emailAddress);
 
     @Insert
     void insert(Request request);

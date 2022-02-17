@@ -28,7 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
 //            }
 //        }).start();
 
-        double[][] deliverPoints = {{12.321, 45.395}, {65.598, 65.279}, {23.798, 17.984}, };
+        double[][] deliverPoints = {{12.321, 45.395}, {65.598, 65.279}, {23.798, 17.984}, };  //配達地点のリスト(データベース使用を検討)
 
         Button registerButton = findViewById(R.id.registerButton);
         registerButton.setOnClickListener(
@@ -68,6 +68,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 }
                             }).start();  //"User"データベースにユーザー情報を登録
 
+                            intentToWithMap.putExtra("user_name", userName);
+                            intentToWithMap.putExtra("email_address", userEmailOrPhone);
                             intentToWithMap.putExtra("deliver_point", deliverP);  //遷移時に渡すデータ("deliver_point"で取り出す)
 
                             startActivity(intentToWithMap);  //WithMapActivityへの遷移
