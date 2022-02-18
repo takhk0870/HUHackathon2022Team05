@@ -18,8 +18,8 @@ public class CheckRequestActivity extends AppCompatActivity {
 
         Intent intentToMain    = new Intent(this, MainActivity.class);
         Intent intentToRequest = new Intent(this, RequestActivity.class);
-        AppDataBase db = Room.databaseBuilder(this, AppDataBase.class, "Request").build();
-        RequestDao requestDao = db.requestDao();
+        AppDatabase2 db = Room.databaseBuilder(this, AppDatabase2.class, "Request2").build();
+        RequestDao2 requestDao = db.requestDao();
 
         Intent intent = getIntent();
         String userName     = intent.getStringExtra("user_name");
@@ -38,8 +38,8 @@ public class CheckRequestActivity extends AppCompatActivity {
         tvDP.setText(setDP);
         String setDayWant = tvDayWant.getText() + " " + dayWant;
         tvDayWant.setText(setDayWant);
-        String setWhatWant = tvWhatWant.getText() + "\n　" + dayWant;
-        tvDayWant.setText(setWhatWant);
+        String setWhatWant = tvWhatWant.getText() + "\n　" + whatWant;
+        tvWhatWant.setText(setWhatWant);
 
         checkButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +47,7 @@ public class CheckRequestActivity extends AppCompatActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        requestDao.insert(new Request(0, userName, emailAddress, whatWant, dayWant, deliverPoint));
+                        requestDao.insert(new Request2(0, userName, emailAddress, whatWant, dayWant, deliverPoint));
                     }
                 }).start();
 

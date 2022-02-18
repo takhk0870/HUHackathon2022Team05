@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intentToChangeRQ = new Intent(this, ChangeRequestActivity.class);
         Intent intentToChangeDP = new Intent(this, ChangeDPActivity.class);
         Intent intentToStart    = new Intent(this, StartActivity.class);
-        AppDataBase db = Room.databaseBuilder(this, AppDataBase.class, "Request").build();
-        RequestDao requestDao = db.requestDao();
+        AppDatabase2 db = Room.databaseBuilder(this, AppDatabase2.class, "Request2").build();
+        RequestDao2 requestDao = db.requestDao();
 
         TextView tvShowName     = findViewById(R.id.tvShowName);
         TextView tvShowRequest  = findViewById(R.id.tvShowRequest);
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if(requestDao.loadAllByNameAndEmailAddress(userName, emailAddress) != null){
-                    for(Request request : requestDao.loadAllByNameAndEmailAddress(userName, emailAddress)){
+                    for(Request2 request : requestDao.loadAllByNameAndEmailAddress(userName, emailAddress)){
                         String str = tvShowRequest.getText() + "\n " + request.toString();
                         tvShowRequest.setText(str);
                     }
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 intentToChangeRQ.putExtra("user_name", userName);
-                intentToRequest.putExtra("email_address", emailAddress);
+                intentToChangeRQ.putExtra("email_address", emailAddress);
                 startActivity(intentToChangeRQ);
             }
         });

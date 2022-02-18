@@ -1,12 +1,11 @@
 package events.huhackathon2022;
 
 import androidx.room.ColumnInfo;
-import androidx.room.Dao;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class User {
+public class User2 {
     @PrimaryKey(autoGenerate = true)
     public int userID;
 
@@ -25,10 +24,10 @@ public class User {
     @ColumnInfo(name = "deliver_point")
     public int deliverPoint;
 
-    public User(){
+    public User2(){
     }
 
-    public User(int i, String userName, String userEmailOrPhone, double userLatitude, double userLongitude, int deliverP) {
+    public User2(int i, String userName, String userEmailOrPhone, double userLatitude, double userLongitude, int deliverP) {
         this.userID = i;
         this.userName = userName;
         this.emailAddress = userEmailOrPhone;

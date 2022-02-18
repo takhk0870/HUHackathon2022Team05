@@ -5,12 +5,9 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.util.Date;
-
-
 @Entity
-public class Request {
-    @PrimaryKey
+public class Request2 {
+    @PrimaryKey(autoGenerate = true)
     public int userID;
 
     @ColumnInfo(name = "user_name")
@@ -33,9 +30,9 @@ public class Request {
         return "希望日: " + dayWant + ", 依頼: " + whatWant;
     }
 
-    public Request(){}
+    public Request2(){}
 
-    public Request(int i, String un, String ea, String ww, String dw, int dp){
+    public Request2(int i, String un, String ea, String ww, String dw, int dp){
         this.userID = i;
         this.userName = un;
         this.emailAddress = ea;

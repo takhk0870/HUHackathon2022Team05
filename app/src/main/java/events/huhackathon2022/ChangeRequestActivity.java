@@ -12,7 +12,7 @@ public class ChangeRequestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_checkrequest);
+        setContentView(R.layout.activity_changerequest);
 
 
     }

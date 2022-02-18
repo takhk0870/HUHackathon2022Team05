@@ -18,8 +18,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         Intent intentToWithMap = new Intent(this, WithMapActivity.class);
 
-        AppDataBase db = Room.databaseBuilder(this, AppDataBase.class, "User").build();
-        UserDao userDao = db.userDao();
+        AppDatabase2 db = Room.databaseBuilder(this, AppDatabase2.class, "User2").build();
+        UserDao2 userDao = db.userDao();
 
 //        new Thread(new Runnable() {  //データベース全削除用
 //            @Override
@@ -48,14 +48,14 @@ public class RegisterActivity extends AppCompatActivity {
 
                         if(userName.length() != 0 && userEmailOrPhone.length() != 0){
 
-                            int deliverP = 0;
+                            int deliverP = 1;
                             double distance = Math.pow((userLatitude - deliverPoints[0][0]), 2) + Math.pow((userLongitude - deliverPoints[0][1]), 2);
 
                             for(int i = 0 ; i < deliverPoints.length; i++){
                                 double d = Math.pow((userLatitude - deliverPoints[i][0]), 2) + Math.pow((userLongitude - deliverPoints[i][1]), 2);
 
                                 if(d < distance){
-                                    deliverP = i;
+                                    deliverP = i+1;
                                     distance = d;
                                 }
                             }
@@ -64,7 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
                             new Thread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    userDao.insert(new User(0, userName, userEmailOrPhone, userLatitude, userLongitude, finalDeliverP));
+                                    userDao.insert(new User2(0, userName, userEmailOrPhone, userLatitude, userLongitude, finalDeliverP));
                                 }
                             }).start();  //"User"データベースにユーザー情報を登録
 

@@ -23,6 +23,7 @@ public class WithMapActivity extends AppCompatActivity {
         Intent intent    = getIntent();
         int deliverPoint = intent.getIntExtra("deliver_point", -1);
         String userName  = intent.getStringExtra("user_name");
+        String emailAddress = intent.getStringExtra("email_address");
         TextView tvShowDeliverPoint = findViewById(R.id.tvShowDeliverPoint);
         Button   buttonToMain       = findViewById(R.id.buttonToMain);
 
@@ -33,6 +34,7 @@ public class WithMapActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 intentToMain.putExtra("user_name", userName);
+                intentToMain.putExtra("email_address", emailAddress);
                 intentToMain.putExtra("deliver_point", deliverPoint);
                 startActivity(intentToMain);
             }
