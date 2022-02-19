@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">HUHackathon2022</string>
+    <string name="title_activity_with_maps">WithMapsActivity</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

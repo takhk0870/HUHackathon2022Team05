@@ -14,6 +14,8 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
+        System.out.println(this.getDatabasePath("Request.db").getParent());
+
         Intent intentToRegister = new Intent(this, RegisterActivity.class);
         Intent intentToLogIn    = new Intent(this, LogInActivity.class);
 

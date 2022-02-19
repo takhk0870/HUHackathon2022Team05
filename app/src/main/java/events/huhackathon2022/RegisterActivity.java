@@ -70,6 +70,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                             intentToWithMap.putExtra("user_name", userName);
                             intentToWithMap.putExtra("email_address", userEmailOrPhone);
+                            intentToWithMap.putExtra("latitude", userLatitude);
+                            intentToWithMap.putExtra("longitude", userLongitude);
                             intentToWithMap.putExtra("deliver_point", deliverP);  //遷移時に渡すデータ("deliver_point"で取り出す)
 
                             startActivity(intentToWithMap);  //WithMapActivityへの遷移
